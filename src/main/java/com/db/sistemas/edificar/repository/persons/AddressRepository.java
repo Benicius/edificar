@@ -1,4 +1,4 @@
-package com.db.sistemas.edificar.repository;
+package com.db.sistemas.edificar.repository.persons;
 
 import com.db.sistemas.edificar.domains.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
