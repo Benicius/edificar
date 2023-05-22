@@ -1,6 +1,4 @@
-package com.db.sistemas.edificar.domains.persons;
-
-import com.db.sistemas.edificar.domains.Address;
+package com.db.sistemas.edificar.domains.persons.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,8 +15,27 @@ public abstract class Person {
   private String cnpj;
   private LocalDate birthday;
   private String cellphone;
+  private Long addressId;
 
-  @OneToOne(cascade = CascadeType.PERSIST) private Address address;
+  @Column(name = "company_id", insertable = false, updatable = false)
+  private Long companyId;
+
+  public Person(
+      String name,
+      String cpf,
+      String cnpj,
+      LocalDate birthday,
+      String cellphone,
+      Long addressId,
+      Long companyId) {
+    this.name = name;
+    this.cpf = cpf;
+    this.cnpj = cnpj;
+    this.birthday = birthday;
+    this.cellphone = cellphone;
+    this.addressId = addressId;
+    this.companyId = companyId;
+  }
 
   public Long getId() {
     return id;
@@ -68,11 +85,19 @@ public abstract class Person {
     this.cellphone = cellphone;
   }
 
-  public Address getAddress() {
-    return address;
+  public Long getAddressId() {
+    return addressId;
   }
 
-  public void setAddress(Address address) {
-    this.address = address;
+  public void setAddressId(Long addressId) {
+    this.addressId = addressId;
+  }
+
+  public Long getCompanyId() {
+    return companyId;
+  }
+
+  public void setCompanyId(Long companyId) {
+    this.companyId = companyId;
   }
 }

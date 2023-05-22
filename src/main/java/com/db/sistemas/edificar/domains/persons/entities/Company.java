@@ -1,4 +1,4 @@
-package com.db.sistemas.edificar.domains.persons;
+package com.db.sistemas.edificar.domains.persons.entities;
 
 import com.db.sistemas.edificar.domains.Address;
 
@@ -10,7 +10,6 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
     private String cnpj;
     @OneToOne(cascade = CascadeType.PERSIST)

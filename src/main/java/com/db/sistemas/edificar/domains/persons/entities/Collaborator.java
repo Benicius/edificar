@@ -1,9 +1,10 @@
-package com.db.sistemas.edificar.domains.persons;
+package com.db.sistemas.edificar.domains.persons.entities;
 
 import com.db.sistemas.edificar.domains.PaymentFormatEnum;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 public class Collaborator extends Person {
@@ -11,6 +12,23 @@ public class Collaborator extends Person {
   private PaymentFormatEnum payFormat;
   private BigDecimal payment;
   private Integer workTime;
+
+  public Collaborator(
+      String name,
+      String cpf,
+      String cnpj,
+      LocalDate birthday,
+      String cellphone,
+      Long addressId,
+      Long companyId,
+      PaymentFormatEnum payFormat,
+      BigDecimal payment,
+      Integer workTime) {
+    super(name, cpf, cnpj, birthday, cellphone, addressId, companyId);
+    this.payFormat = payFormat;
+    this.payment = payment;
+    this.workTime = workTime;
+  }
 
   public PaymentFormatEnum isPayFormat() {
     return payFormat;

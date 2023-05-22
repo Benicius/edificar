@@ -1,6 +1,6 @@
-package com.db.sistemas.edificar.repository;
+package com.db.sistemas.edificar.repository.persons;
 
-import com.db.sistemas.edificar.domains.persons.UserManager;
+import com.db.sistemas.edificar.domains.persons.entities.UserManager;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

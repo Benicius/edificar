@@ -1,6 +1,6 @@
 package com.db.sistemas.edificar.repository;
 
-import com.db.sistemas.edificar.domains.persons.Company;
+import com.db.sistemas.edificar.domains.persons.entities.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
