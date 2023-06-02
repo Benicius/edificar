@@ -15,7 +15,9 @@ public abstract class Structure {
   private String description;
   private BigDecimal price;
 
-  @OneToOne private Address address;
+  @OneToOne
+  @JoinColumn(name = "address_id", nullable = false)
+  private Address address;
 
   public Long getId() {
     return id;

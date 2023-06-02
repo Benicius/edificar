@@ -13,6 +13,7 @@ public class Company {
     private String name;
     private String cnpj;
     @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
     private String phone;
 

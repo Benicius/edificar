@@ -1,18 +1,20 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import com.db.sistemas.edificar.domains.Address;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "user_manager")
 public class UserManager extends Person {
 
   private String login;
   private String password;
-
+/*
   @ManyToOne(cascade = CascadeType.PERSIST)
-  private Company company;
+  @JoinColumn(name = "company_id", nullable = false)
+  private Company company;*/
 
   public UserManager(
       String name,
@@ -20,17 +22,17 @@ public class UserManager extends Person {
       String cnpj,
       LocalDate birthday,
       String cellphone,
-      Long addressId,
-      Long companyId,
+      Address addressId,
+      Company companyId,
       String login,
       String password,
       Company company) {
     super(name, cpf, cnpj, birthday, cellphone, addressId, companyId);
     this.login = login;
     this.password = password;
-    this.company = company;
   }
-
+  public UserManager() {
+  }
   public String getLogin() {
     return login;
   }
@@ -47,11 +49,4 @@ public class UserManager extends Person {
     this.password = password;
   }
 
-  public Company getCompany() {
-    return company;
-  }
-
-  public void setCompany(Company company) {
-    this.company = company;
-  }
 }

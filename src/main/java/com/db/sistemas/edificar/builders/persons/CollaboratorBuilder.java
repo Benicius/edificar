@@ -1,7 +1,9 @@
 package com.db.sistemas.edificar.builders.persons;
 
+import com.db.sistemas.edificar.domains.Address;
 import com.db.sistemas.edificar.domains.PaymentFormatEnum;
 import com.db.sistemas.edificar.domains.persons.entities.Collaborator;
+import com.db.sistemas.edificar.domains.persons.entities.Company;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,8 +15,8 @@ public class CollaboratorBuilder {
   private String cnpj;
   private LocalDate birthday;
   private String cellphone;
-  private Long addressId;
-  private Long companyId;
+  private Address addressId;
+  private Company companyId;
   private PaymentFormatEnum payFormat;
   private BigDecimal payment;
   private Integer workTime;
@@ -44,12 +46,12 @@ public class CollaboratorBuilder {
     return this;
   }
 
-  public CollaboratorBuilder setAddressId(final Long addressId) {
+  public CollaboratorBuilder setAddressId(final Address addressId) {
     this.addressId = addressId;
     return this;
   }
 
-  public CollaboratorBuilder setCompanyId(final Long companyId) {
+  public CollaboratorBuilder setCompanyId(final Company companyId) {
     this.companyId = companyId;
     return this;
   }

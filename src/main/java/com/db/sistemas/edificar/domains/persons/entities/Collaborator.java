@@ -1,5 +1,6 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
+import com.db.sistemas.edificar.domains.Address;
 import com.db.sistemas.edificar.domains.PaymentFormatEnum;
 
 import javax.persistence.Entity;
@@ -19,8 +20,8 @@ public class Collaborator extends Person {
       String cnpj,
       LocalDate birthday,
       String cellphone,
-      Long addressId,
-      Long companyId,
+      Address addressId,
+      Company companyId,
       PaymentFormatEnum payFormat,
       BigDecimal payment,
       Integer workTime) {

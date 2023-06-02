@@ -1,5 +1,7 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
+import com.db.sistemas.edificar.domains.Address;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -15,10 +17,16 @@ public abstract class Person {
   private String cnpj;
   private LocalDate birthday;
   private String cellphone;
-  private Long addressId;
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "address_id", nullable = false)
+  private Address address;
 
-  @Column(name = "company_id", insertable = false, updatable = false)
-  private Long companyId;
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "company_id", nullable = false)
+  private Company company;
+
+  public Person() {
+  }
 
   public Person(
       String name,
@@ -26,15 +34,15 @@ public abstract class Person {
       String cnpj,
       LocalDate birthday,
       String cellphone,
-      Long addressId,
-      Long companyId) {
+      Address addressId,
+      Company companyId) {
     this.name = name;
     this.cpf = cpf;
     this.cnpj = cnpj;
     this.birthday = birthday;
     this.cellphone = cellphone;
-    this.addressId = addressId;
-    this.companyId = companyId;
+    this.address = addressId;
+    this.company = companyId;
   }
 
   public Long getId() {
@@ -85,19 +93,19 @@ public abstract class Person {
     this.cellphone = cellphone;
   }
 
-  public Long getAddressId() {
-    return addressId;
+  public Address getAddress() {
+    return address;
   }
 
-  public void setAddressId(Long addressId) {
-    this.addressId = addressId;
+  public void setAddress(Address address) {
+    this.address = address;
   }
 
-  public Long getCompanyId() {
-    return companyId;
+  public Company getCompany() {
+    return company;
   }
 
-  public void setCompanyId(Long companyId) {
-    this.companyId = companyId;
+  public void setCompany(Company company) {
+    this.company = company;
   }
 }
