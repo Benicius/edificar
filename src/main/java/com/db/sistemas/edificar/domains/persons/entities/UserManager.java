@@ -1,20 +1,29 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
 import com.db.sistemas.edificar.domains.Address;
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user_manager")
-public class UserManager extends Person {
+public class UserManager extends Person implements UserDetails, Serializable {
 
-  private String login;
+  @Column(nullable = false, unique = true)
+  private String username;
+  @Column(nullable = false)
   private String password;
-/*
-  @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "company_id", nullable = false)
-  private Company company;*/
+
+  @ManyToMany
+  @JoinTable(name = "users_roles",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+  private List<RoleModel> roles;
 
   public UserManager(
       String name,
@@ -24,29 +33,56 @@ public class UserManager extends Person {
       String cellphone,
       Address addressId,
       Company companyId,
-      String login,
-      String password,
-      Company company) {
+      String username,
+      String password) {
     super(name, cpf, cnpj, birthday, cellphone, addressId, companyId);
-    this.login = login;
+    this.username = username;
     this.password = password;
   }
   public UserManager() {
   }
-  public String getLogin() {
-    return login;
-  }
-
-  public void setLogin(String login) {
-    this.login = login;
-  }
-
-  public String getPassword() {
-    return password;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public void setPassword(String password) {
     this.password = password;
   }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return this.roles;
+  }
+
+  public String getPassword() {
+    return this.password;
+  }
+
+  @Override
+  public String getUsername() {
+    return this.username;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
+
+
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.db.sistemas.edificar.helpers;
 
 import com.db.sistemas.edificar.builders.persons.CollaboratorBuilder;
@@ -31,3 +32,4 @@ public class CollaboratorRequestHelper {
 		return null;
 	}
 }
+*/

@@ -1,6 +1,6 @@
 package com.db.sistemas.edificar.domains.structure;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Execution extends Structure{

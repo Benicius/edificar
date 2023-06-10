@@ -1,8 +1,8 @@
 package com.db.sistemas.edificar.domains.structure;
 
 import com.db.sistemas.edificar.domains.Address;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 @MappedSuperclass

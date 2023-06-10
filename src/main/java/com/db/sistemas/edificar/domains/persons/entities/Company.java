@@ -1,8 +1,7 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
 import com.db.sistemas.edificar.domains.Address;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Company {

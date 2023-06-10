@@ -2,8 +2,8 @@ package com.db.sistemas.edificar.domains.persons.entities;
 
 import com.db.sistemas.edificar.domains.Address;
 import com.db.sistemas.edificar.domains.PaymentFormatEnum;
+import jakarta.persistence.Entity;
 
-import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -29,6 +29,9 @@ public class Collaborator extends Person {
     this.payFormat = payFormat;
     this.payment = payment;
     this.workTime = workTime;
+  }
+
+  public Collaborator() {
   }
 
   public PaymentFormatEnum isPayFormat() {

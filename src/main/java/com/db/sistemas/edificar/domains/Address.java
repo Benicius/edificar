@@ -1,6 +1,7 @@
 package com.db.sistemas.edificar.domains;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "address")

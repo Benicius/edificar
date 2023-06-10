@@ -1,6 +1,7 @@
 package com.db.sistemas.edificar.controllers.persons;
 
 import com.db.sistemas.edificar.domains.persons.entities.Collaborator;
+import com.db.sistemas.edificar.domains.persons.requests.CollaboratorRequest;
 import com.db.sistemas.edificar.services.persons.CollaboratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ public class CollaboratorController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Collaborator> saveCollaborator(@RequestBody final Collaborator collaborator){
-		return new ResponseEntity<>(collaboratorService.saveCollaborator(collaborator), HttpStatus.CREATED);
+	public ResponseEntity<Collaborator> saveCollaborator(@RequestBody final CollaboratorRequest collaboratorRequest){
+		return new ResponseEntity<>(collaboratorService.saveCollaborator(collaboratorRequest), HttpStatus.CREATED);
 	}
 
 	@GetMapping
