@@ -1,6 +1,7 @@
 package com.db.sistemas.edificar.controllers.persons;
 
 import com.db.sistemas.edificar.domains.persons.entities.UserManager;
+import com.db.sistemas.edificar.domains.persons.requests.UserRequests;
 import com.db.sistemas.edificar.services.persons.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserManager> save(@RequestBody final UserManager userManager){
-        return new ResponseEntity<>(userService.save(userManager), HttpStatus.CREATED);
+    public ResponseEntity<UserManager> save(@RequestBody final UserRequests userRequests){
+        return new ResponseEntity<>(userService.save(userRequests), HttpStatus.CREATED);
     }
 
     @GetMapping

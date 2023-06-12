@@ -1,9 +1,11 @@
 package com.db.sistemas.edificar.services.persons;
 
 import com.db.sistemas.edificar.domains.persons.entities.UserManager;
+import com.db.sistemas.edificar.domains.persons.requests.UserRequests;
 import com.db.sistemas.edificar.repository.CompanyRepository;
 import com.db.sistemas.edificar.repository.persons.AddressRepository;
 import com.db.sistemas.edificar.repository.persons.UserRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,9 @@ public class UserService {
     this.addressRepository = addressRepository;
   }
 
-  public UserManager save(final UserManager userManager) {
+  public UserManager save(final UserRequests userRequests) {
+    var userManager = new UserManager();
+    BeanUtils.copyProperties(userManager, userRequests);
     return userRepository.save(userManager);
   }
 
