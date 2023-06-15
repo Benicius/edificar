@@ -83,6 +83,11 @@ public class UserManager extends Person implements UserDetails, Serializable {
     return true;
   }
 
+  public List<RoleModel> getRoles() {
+    return roles;
+  }
 
-
+  public void setRoles(List<RoleModel> roles) {
+    this.roles = roles;
+  }
 }

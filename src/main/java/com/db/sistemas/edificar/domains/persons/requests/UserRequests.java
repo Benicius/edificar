@@ -1,9 +1,11 @@
 package com.db.sistemas.edificar.domains.persons.requests;
 
-import com.db.sistemas.edificar.domains.Address;
+import com.db.sistemas.edificar.domains.AddressRequest;
 import com.db.sistemas.edificar.domains.persons.entities.Company;
+import com.db.sistemas.edificar.domains.persons.entities.RoleModel;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public record UserRequests(
 				String username,
@@ -13,6 +15,7 @@ public record UserRequests(
 				String cnpj,
 				LocalDate birthday,
 				String cellphone,
-				Address address,
+				List<RoleModel> roles,
+				AddressRequest address,
 				Company company) {
 }

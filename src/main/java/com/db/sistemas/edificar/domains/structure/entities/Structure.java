@@ -1,6 +1,7 @@
 package com.db.sistemas.edificar.domains.structure.entities;
 
 import com.db.sistemas.edificar.domains.Address;
+import com.db.sistemas.edificar.domains.persons.entities.Company;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -18,6 +19,10 @@ public abstract class Structure {
   @OneToOne
   @JoinColumn(name = "address_id", nullable = false)
   private Address address;
+
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "company_id", nullable = false)
+  private Company company;
 
   public Long getId() {
     return id;
@@ -57,5 +62,13 @@ public abstract class Structure {
 
   public void setAddress(Address address) {
     this.address = address;
+  }
+
+  public Company getCompany() {
+    return company;
+  }
+
+  public void setCompany(Company company) {
+    this.company = company;
   }
 }
