@@ -1,7 +1,9 @@
 package com.db.sistemas.edificar.services.structures;
 
-import com.db.sistemas.edificar.domains.structure.WorkType;
+import com.db.sistemas.edificar.domains.structure.entities.WorkType;
+import com.db.sistemas.edificar.domains.structure.requests.WorkTypeRequest;
 import com.db.sistemas.edificar.repository.structure.WorkTypeRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,9 @@ public class WorkService {
 		this.workTypeRepository = workTypeRepository;
 	}
 
-	public WorkType saveWork(final WorkType workType){
+	public WorkType saveWork(final WorkTypeRequest workTypeRequest){
+		var workType = new WorkType();
+		BeanUtils.copyProperties(workType, workTypeRequest);
 		return workTypeRepository.save(workType);
 	}
 

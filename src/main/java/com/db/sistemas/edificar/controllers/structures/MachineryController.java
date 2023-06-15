@@ -1,6 +1,7 @@
 package com.db.sistemas.edificar.controllers.structures;
 
-import com.db.sistemas.edificar.domains.structure.Machinery;
+import com.db.sistemas.edificar.domains.structure.entities.Machinery;
+import com.db.sistemas.edificar.domains.structure.requests.MachineryRequests;
 import com.db.sistemas.edificar.services.structures.MachineryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ public class MachineryController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Machinery> saveMachinery(@RequestBody final Machinery machinery){
-		return new ResponseEntity<>(machineryService.saveMachinery(machinery), HttpStatus.CREATED);
+	public ResponseEntity<Machinery> saveMachinery(@RequestBody final MachineryRequests machineryRequests){
+		return new ResponseEntity<>(machineryService.saveMachinery(machineryRequests), HttpStatus.CREATED);
 	}
 
 	@GetMapping

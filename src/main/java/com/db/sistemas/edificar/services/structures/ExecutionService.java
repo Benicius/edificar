@@ -1,7 +1,9 @@
 package com.db.sistemas.edificar.services.structures;
 
-import com.db.sistemas.edificar.domains.structure.Execution;
+import com.db.sistemas.edificar.domains.structure.entities.Execution;
+import com.db.sistemas.edificar.domains.structure.requests.ExecutionRequest;
 import com.db.sistemas.edificar.repository.structure.ExecutionRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +17,9 @@ public class ExecutionService {
 		this.executionRepository = executionRepository;
 	}
 
-	public Execution saveExecution(final Execution execution){
+	public Execution saveExecution(final ExecutionRequest executionRequest){
+		var execution = new Execution();
+		BeanUtils.copyProperties(execution, executionRequest);
 		return executionRepository.save(execution);
 	}
 

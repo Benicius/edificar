@@ -1,4 +1,4 @@
-package com.db.sistemas.edificar.domains.structure;
+package com.db.sistemas.edificar.domains.structure.entities;
 
 public enum LeaseType {
 
