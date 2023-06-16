@@ -3,12 +3,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/edificar
     username: postgres
     password: root
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    database: postgresql
     properties:
       hibernate:
         format_sql: true
-        temp:
-          use_jdbc_metadata_defaults: false
