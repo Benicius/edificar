@@ -1,17 +1,21 @@
 package com.db.sistemas.edificar.domains.persons.requests;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.db.sistemas.edificar.domains.AddressRequest;
+import com.db.sistemas.edificar.domains.persons.entities.Company;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class RegisterRequest {
+import java.time.LocalDate;
 
-  private String name;
-  private String username;
-  private String password;
+
+public record RegisterRequest(
+        String name,
+        String username,
+        String password,
+        String cpf,
+        String cnpj,
+        LocalDate birthday,
+        String cellphone,
+        AddressRequest address,
+        Company company
+) {
+
 }

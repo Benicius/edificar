@@ -1,5 +1,6 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
+import com.db.sistemas.edificar.domains.Address;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,6 +32,25 @@ public class User  extends Person implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Role role;
 
+  @Builder
+  public User(
+          Long id,
+          String name,
+          String cpf,
+          String cnpj,
+          LocalDate birthday,
+          String cellphone,
+          Address address,
+          Company company,
+          String username,
+          String password,
+          Role role) {
+    super(id, name, cpf, cnpj, birthday, cellphone, address, company);
+    this.username = username;
+    this.password = password;
+    this.role = role;
+  }
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return List.of(new SimpleGrantedAuthority(role.name()));
@@ -47,21 +68,21 @@ public class User  extends Person implements UserDetails {
 
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return false;
+    return true;
   }
 }

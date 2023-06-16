@@ -33,8 +33,8 @@ public class SecurityConfiguration {
       .authorizeHttpRequests(
         (authorize) -> authorize
           .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-          .requestMatchers("/api/v1/demo-controller", "/api/v1/auth/register").permitAll()
-          .anyRequest().denyAll()
+          .requestMatchers("/api/v1/demo-controller", "/api/v1/auth/**").permitAll()
+          .anyRequest().authenticated()
         )
       .sessionManagement((session) -> session
       .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

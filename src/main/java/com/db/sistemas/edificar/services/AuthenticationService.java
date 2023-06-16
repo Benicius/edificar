@@ -2,12 +2,15 @@ package com.db.sistemas.edificar.services;
 
 import com.db.sistemas.edificar.config.JwtService;
 import com.db.sistemas.edificar.controllers.auth.AuthenticationRequest;
+import com.db.sistemas.edificar.domains.Address;
 import com.db.sistemas.edificar.domains.persons.entities.Role;
 import com.db.sistemas.edificar.domains.persons.entities.User;
 import com.db.sistemas.edificar.domains.persons.requests.RegisterRequest;
 import com.db.sistemas.edificar.domains.persons.responses.AuthenticationResponse;
+import com.db.sistemas.edificar.repository.persons.AddressRepository;
 import com.db.sistemas.edificar.repository.persons.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,12 +24,14 @@ public class AuthenticationService {
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
+  private final AddressService addressService;
   public AuthenticationResponse register(RegisterRequest request) {
-    var user = User.builder()
-      .username(request.getUsername())
-      .password(passwordEncoder.encode(request.getPassword()))
-      .role(Role.USER)
-      .build();
+
+    var user = new User();
+    BeanUtils.copyProperties(request, user);
+    user.setAddress(addressService.getAddress(request.address()));
+    user.setRole(Role.ADMIN);
+    user.setPassword(passwordEncoder.encode(request.password()));
     userRepository.save(user);
     var jwtToken = jwtService.generateToken(user);
     return AuthenticationResponse.builder()
