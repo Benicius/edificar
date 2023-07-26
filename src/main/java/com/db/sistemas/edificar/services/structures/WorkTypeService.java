@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class WorkService {
+public class WorkTypeService {
 
 	private final WorkTypeRepository workTypeRepository;
 
 	@Autowired
-	public WorkService(WorkTypeRepository workTypeRepository) {
+	public WorkTypeService(WorkTypeRepository workTypeRepository) {
 		this.workTypeRepository = workTypeRepository;
 	}
 

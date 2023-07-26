@@ -1,4 +1,4 @@
-package com.db.sistemas.edificar.domains;
+package com.db.sistemas.edificar.domains.structure;
 
 public enum PaymentFormatEnum {
 

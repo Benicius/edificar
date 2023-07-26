@@ -2,7 +2,7 @@ package com.db.sistemas.edificar.controllers.structures;
 
 import com.db.sistemas.edificar.domains.structure.entities.WorkType;
 import com.db.sistemas.edificar.domains.structure.requests.WorkTypeRequest;
-import com.db.sistemas.edificar.services.structures.WorkService;
+import com.db.sistemas.edificar.services.structures.WorkTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,10 @@ import java.util.List;
 @RequestMapping("/api/v1/works")
 public class WorkController {
 
-	private final WorkService workService;
+	private final WorkTypeService workService;
 
 	@Autowired
-	public WorkController(WorkService workService) {
+	public WorkController(WorkTypeService workService) {
 		this.workService = workService;
 	}
 

@@ -1,14 +1,12 @@
 package com.db.sistemas.edificar.domains.persons.entities;
 
-import com.db.sistemas.edificar.domains.Address;
-import com.db.sistemas.edificar.domains.PaymentFormatEnum;
+import com.db.sistemas.edificar.domains.structure.PaymentFormatEnum;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Entity
 @Data

@@ -1,7 +1,7 @@
 package com.db.sistemas.edificar.domains.persons.requests;
 
 import com.db.sistemas.edificar.domains.Address;
-import com.db.sistemas.edificar.domains.PaymentFormatEnum;
+import com.db.sistemas.edificar.domains.structure.PaymentFormatEnum;
 import com.db.sistemas.edificar.domains.persons.entities.Company;
 
 import java.math.BigDecimal;

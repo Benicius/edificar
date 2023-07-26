@@ -3,10 +3,16 @@ package com.db.sistemas.edificar.domains.structure.entities;
 import com.db.sistemas.edificar.domains.Address;
 import com.db.sistemas.edificar.domains.persons.entities.Company;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @MappedSuperclass
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Structure {
 
   @Id
